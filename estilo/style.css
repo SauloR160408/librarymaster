@@ -1,4 +1,19 @@
+/* variaveis da paleta de cores*/
+:root{
+    --cor1: #521C1C;
+    --cor2: #380809 ;
+    --cor3: #EFE6CF ;
+    --cor4: #D9C8A9;
+    --fonteprin: ope ;
+
+}
+
+
 *{
     padding: 0;
     margin: 0;
+}
+
+.hidden{
+    display: none;
 }
