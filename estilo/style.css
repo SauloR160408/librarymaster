@@ -12,8 +12,95 @@
 *{
     padding: 0;
     margin: 0;
-}
+    font-family: opensans;
 
+      
+}
+body{
+        background-color: var(--fundo);
+}
 .hidden{
     display: none;
+}
+
+
+
+
+
+
+/*Area de estilo do login*/
+#areacad{
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    background-color: var(--fundo);
+
+    animation: fadeIn 0.8s ease forwards;
+    opacity: 0;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* começa um pouco abaixo */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#login{
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.508);
+
+    width: 400px;
+    height: 300px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* vertical */
+    align-items: center;     /* horizontal */
+    gap: 10px;
+
+    background-color: rgba(255, 255, 255, 0.151); /* transparência */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    
+
+    border: 1px solid;
+    border-radius: 15px;
+    border-color: var(--cor4);
+}
+#login h2 {
+    color: var(--cor3);
+    margin-bottom: 10px;
+}
+
+#login input{
+    background-color: var(--cor3);
+    color: var(--cor2);
+    width: 80%;
+    margin:10px 0;
+    padding: 8px;
+    border: none;
+    border-radius: 8px;
+
+    font-size:15px;
+}
+#login input[type="submit"]{
+    width: 50%;
+    cursor: pointer;
+    transition: 0.5s;
+}
+#login input[type="submit"]:hover{
+    color: var(--cor3);
+    background-color: var(--cor2);
+}
+#logocad{
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
 }
