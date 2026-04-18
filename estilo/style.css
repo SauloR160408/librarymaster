@@ -32,8 +32,18 @@ body{
 }
 
 /*rodape e cabeçalho*/
+#logo{
+    width: 40px;
+}
+
 #cab{
     background-color: var(--cor2);
+
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
 #cab #hotbar {
     display: grid;
