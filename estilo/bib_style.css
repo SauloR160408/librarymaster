@@ -46,21 +46,69 @@ main{
     width: 1000px;
     height: 300px;
     display: flex;
-
 }
-
+.book img{
+    width: 180px;
+}
 .imagem/*parte da imagem*/{
+    display: flex;
+
     width: 250px;
     height: 100%;
     background-color: var(--cor3);
     border-bottom-left-radius: 10px;
     border-top-left-radius: 10px;
+
+    flex-direction: column;
+    justify-content: center; /* vertical */
+    align-items: center;     /* horizontal */
+    
 }
 .info/*parte das infor*/{
     width: 750px;
     height: 100%;
+    display:flex;
+    flex-direction:column;
     
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
     background-color: var(--cor4);
+    color: var(--cor2);
+
+    padding: 25px 35px; 
+    box-sizing: border-box;
+    overflow: hidden; 
+}
+
+.info h2, .info p{
+margin:0;
+}
+.cab-b{
+    display:flex;
+flex-direction:column;
+gap:8px;
+margin-bottom:18px;
+}
+.sobre{
+    line-height: 1.4;
+    margin-bottom: 5px;
+    
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* Número de linhas visíveis antes de cortar */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.btn-info{
+    margin-top: auto; /* Isso empurra os botões sempre para o rodapé da div .info */
+    display: flex;
+    gap: 15px;
+    padding-top: 10px;
+}
+
+.btn-info button{
+padding:8px 16px;
+border:none;
+border-radius:8px;
+cursor:pointer;
 }
