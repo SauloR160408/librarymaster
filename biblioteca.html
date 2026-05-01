@@ -1,137 +1,227 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library Master</title>
-    <link rel="stylesheet" href="estilo/style.css">
-    <link rel="stylesheet" href="estilo/bib_style.css">
-    
-</head>
-<body>
+    <link rel="stylesheet" href="estilo/style.css" />
+    <link rel="stylesheet" href="estilo/bib_style.css" />
+  </head>
+  <body>
     <header id="cab">
-        <nav id="hotbar">
-            <div><img src="imagens/logo_oficial-removebg-preview.png" alt="Nossa Logo" id="logo"></div>
-            <div id="menu">
-                <a href="index.html">Início</a>
-                <a href="biblioteca.html">Biblioteca</a>
-                <a href="emprestimo.html">Empréstimo</a>
-            </div>
-        
-            <input type="search" placeholder="Pesquise..." id="pesq">
-        </nav>
+      <nav id="hotbar">
+        <div>
+          <img
+            src="imagens/logo_oficial-removebg-preview.png"
+            alt="Nossa Logo"
+            id="logo"
+          />
+        </div>
+        <div id="menu">
+          <a href="index.html">Início</a>
+          <a href="biblioteca.html">Biblioteca</a>
+          <a href="emprestimo.html">Empréstimo</a>
+        </div>
+
+        <input type="search" placeholder="Pesquise..." id="pesq" />
+      </nav>
     </header>
-    
+
     <main>
-        <aside id="filter">
-            <label for="filtro" style="color:380809">gêneros:</label>
+      <aside id="filter">
+        <div id="nav-fil">
+            <h2>Filtros</h2>
+    
+            <div class="tabs">
+              <button class="tab active" data-tab="conteudo">Conteúdo</button>
+              <button class="tab" data-tab="avaliacao">Avaliação</button>
+              <button class="tab" data-tab="pessoais">Pessoais</button>
+              <button class="tab" data-tab="ordenacao">Ordenar</button>
+            </div>
+        </div>
+
+        <div class="conteudo-abas">
+          <!-- CONTEÚDO -->
+          <div class="aba active" id="conteudo">
+            <label for="filtro" style="color: 380809">Gênero</label>
             <select name="filtro" id="filtro">
-                <option value="">todos</option>
-                <option value="fantasia">Fantasia</option>
-                <option value="ficcao-cientifica">Ficção Científica</option>
-                <option value="romance">Romance</option>
-                <option value="misterio">Mistério</option>
-                <option value="terror">Terror</option>
-                <option value="aventura">Aventura</option>
-                <option value="drama">Drama</option>
-                <option value="suspense">Suspense</option>
-                <option value="biografia">Biografia</option>
-                <option value="historico">Histórico</option>
-                <option value="poesia">Poesia</option>
-                <option value="autoajuda">Autoajuda</option>
-                <option value="distopia">Distopia</option>
-                <option value="acao">Ação</option>
-                <option value="infantil">Infantil</option>
-                <option value="classicos">Clássicos</option>
+              <option value="">todos</option>
+              <option value="fantasia">Fantasia</option>
+              <option value="ficcao-cientifica">Ficção Científica</option>
+              <option value="romance">Romance</option>
+              <option value="misterio">Mistério</option>
+              <option value="terror">Terror</option>
+              <option value="aventura">Aventura</option>
+              <option value="drama">Drama</option>
+              <option value="suspense">Suspense</option>
+              <option value="biografia">Biografia</option>
+              <option value="historico">Histórico</option>
+              <option value="poesia">Poesia</option>
+              <option value="autoajuda">Autoajuda</option>
+              <option value="distopia">Distopia</option>
+              <option value="acao">Ação</option>
+              <option value="infantil">Infantil</option>
+              <option value="classicos">Clássicos</option>
             </select>
-        </aside>
 
-    <section id="book">
+            <label>Subgênero</label>
+            <select></select>
+
+            <label>Tipo</label>
+            <select>
+              <option>Série</option>
+              <option>Livro único</option>
+            </select>
+
+            <label>Faixa etária</label>
+            <select></select>
+
+            <label>Temas</label>
+            <div class="checkbox-group">
+              <label><input type="checkbox" /> Magia</label>
+              <label><input type="checkbox" /> Mistério</label>
+              <label><input type="checkbox" /> Romance</label>
+            </div>
+          </div>
+
+          <!-- AVALIAÇÃO -->
+          <div class="aba" id="avaliacao">
+            <label>Nota mínima</label>
+            <select>
+              <option>1+</option>
+              <option>2+</option>
+              <option>3+</option>
+              <option>4+</option>
+            </select>
+
+            <label>Popularidade</label>
+            <select>
+              <option>Mais populares</option>
+              <option>Mais avaliados</option>
+            </select>
+          </div>
+
+          <!-- PESSOAIS -->
+          <div class="aba" id="pessoais">
+            <label><input type="checkbox" /> Já lidos</label>
+            <label><input type="checkbox" /> Quero ler</label>
+            <label><input type="checkbox" /> Lendo agora</label>
+            <label><input type="checkbox" /> Favoritos</label>
+          </div>
+
+          <!-- ORDENAÇÃO -->
+          <div class="aba" id="ordenacao">
+            <label>Ordenar por</label>
+            <select>
+              <option>A-Z</option>
+              <option>Maior nota</option>
+              <option>Mais recentes</option>
+              <option>Mais populares</option>
+            </select>
+          </div>
+          <div id="botoes">
+            <button id="dlt">Remover filtro</button>
+            <button id="apli">Aplicar filtros</button>
+          </div>
+        </div>
+      </aside>
+
+      <section id="book">
         <div class="book">
-            <div class="imagem">
-                <img src="imagens/harrypoter-capa.jpg" alt="capa do livro harry potter">
-
+          <div class="imagem">
+            <img
+              src="imagens/harrypoter-capa.jpg"
+              alt="capa do livro harry potter"
+            />
+          </div>
+          <div class="info">
+            <div class="cab-b">
+              <h2 class="titulo">Harry Potter e a Pedra Filosofal</h2>
+              <p class="genero">Fantasia / Aventura</p>
+              <p class="autor">J. R. R. Tolkien</p>
+              <p class="sobre">
+                Harry Potter vive uma infância difícil com os tios até
+                descobrir, aos 11 anos, que é um bruxo. Ao entrar em Hogwarts,
+                conhece um mundo cheio de magia, criaturas fantásticas e
+                mistérios. Ao lado de seus amigos Ron e Hermione, ele aprende
+                feitiços, enfrenta desafios e começa a investigar o segredo da
+                Pedra Filosofal, um objeto poderoso cobiçado por forças
+                sombrias. Durante essa jornada, Harry também descobre pistas
+                sobre seus pais e sobre sua ligação com o terrível Voldemort.
+              </p>
             </div>
-            <div class="info">
-                <div class="cab-b">
-
-                    <h2 class="titulo">Harry Potter e a Pedra Filosofal</h2>
-                    <p class="genero">Fantasia / Aventura</p>
-                    <p class="autor">J. R. R. Tolkien</p>
-                    <p class="sobre">Harry Potter vive uma infância difícil com os tios até descobrir, aos 11 anos, que é um bruxo. Ao entrar em Hogwarts, conhece um mundo cheio de magia, criaturas fantásticas e mistérios. Ao lado de seus amigos Ron e Hermione, ele aprende feitiços, enfrenta desafios e começa a investigar o segredo da Pedra Filosofal, um objeto poderoso cobiçado por forças sombrias. Durante essa jornada, Harry também descobre pistas sobre seus pais e sobre sua ligação com o terrível Voldemort.</p>
-                </div>
-                <div class="btn-info">
-                    <button class="emprestar">Emprestar</button>
-                    <button class="ver-mais">Ver mais</button>
-                </div>
+            <div class="btn-info">
+              <button class="emprestar">Emprestar</button>
+              <button class="ver-mais">Ver mais</button>
             </div>
+          </div>
         </div>
 
         <div class="book">
-            <div class="imagem">
-
+          <div class="imagem"></div>
+          <div class="info">
+            <div class="cab-b">
+              <h2 class="titulo"></h2>
+              <p class="genero"></p>
+              <p class="autor"></p>
+              <p class="sobre"></p>
             </div>
-            <div class="info">
-                <div class="cab-b">
-
-                    <h2 class="titulo"></h2>
-                    <p class="genero"></p>
-                    <p class="autor"></p>
-                    <p class="sobre"></p>
-                </div>
-                <div class="btn-info">
-                    <button class="emprestar">Emprestar</button>
-                    <button class="ver-mais">Ver mais</button>
-                </div>
+            <div class="btn-info">
+              <button class="emprestar">Emprestar</button>
+              <button class="ver-mais">Ver mais</button>
             </div>
+          </div>
         </div>
         <div class="book">
-            <div class="imagem">
-
+          <div class="imagem"></div>
+          <div class="info">
+            <div class="cab-b">
+              <h2 class="titulo"></h2>
+              <p class="genero"></p>
+              <p class="autor"></p>
+              <p class="sobre"></p>
             </div>
-            <div class="info">
-                <div class="cab-b">
-
-                    <h2 class="titulo"></h2>
-                    <p class="genero"></p>
-                    <p class="autor"></p>
-                    <p class="sobre"></p>
-                </div>
-                <div class="btn-info">
-                    <button class="emprestar">Emprestar</button>
-                    <button class="ver-mais">Ver mais</button>
-                </div>
+            <div class="btn-info">
+              <button class="emprestar">Emprestar</button>
+              <button class="ver-mais">Ver mais</button>
             </div>
+          </div>
         </div>
-        
+
         <div class="book">
-            <div class="imagem">
-
+          <div class="imagem"></div>
+          <div class="info">
+            <div class="cab-b">
+              <h2 class="titulo"></h2>
+              <p class="genero"></p>
+              <p class="autor"></p>
+              <p class="sobre"></p>
             </div>
-            <div class="info">
-                <div class="cab-b">
-
-                    <h2 class="titulo"></h2>
-                    <p class="genero"></p>
-                    <p class="autor"></p>
-                    <p class="sobre"></p>
-                </div>
-                <div class="btn-info">
-                    <button class="emprestar">Emprestar</button>
-                    <button class="ver-mais">Ver mais</button>
-                </div>
+            <div class="btn-info">
+              <button class="emprestar">Emprestar</button>
+              <button class="ver-mais">Ver mais</button>
             </div>
-        </div> 
-        </section>
+          </div>
+        </div>
+      </section>
     </main>
-    <footer id="rod"> 
-        <div id="soc-mid">
-            <img src="imagens/inst-icon-removebg-preview.png" alt="icone instagram">
-            <p>@Library_Master</p>
-            <img src="imagens/face-icon-removebg-preview.png" alt="icone facebook">
-            <p>Library Master</p>
-        </div>
+    <footer id="rod">
+      <div id="soc-mid">
+        <img
+          src="imagens/inst-icon-removebg-preview.png"
+          alt="icone instagram"
+        />
+        <p>@Library_Master</p>
+        <img
+          src="imagens/face-icon-removebg-preview.png"
+          alt="icone facebook"
+        />
+        <p>Library Master</p>
+      </div>
     </footer>
-    <script src="JS/script.js"></script>
-</body>
+    <script src="JS/script.js">
+
+      
+    </script>
+  </body>
 </html>
