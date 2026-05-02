@@ -1,4 +1,4 @@
-/* estrutura do banco de dados
+/* estrutura do banco de dados livro
 {
 id: Date.now(),
 nota:5,
@@ -17,6 +17,10 @@ temas: [],
 sobre: "...",
 imagem: "...",
 disponivel: true
+lido:false,
+quero:false,
+lendo:false,
+favorito:false
 }
 */ 
 
@@ -40,7 +44,7 @@ tabs.forEach((tab) => {
 });
 
 /* =========================
-📚 BANCO DE DADOS COMPLETO
+BANCO DE DADOS COMPLETO
 ========================= */
 
 const livrosPadrao = [
@@ -62,7 +66,11 @@ faixaEtaria:"infantil",
 temas:["magia","aventura"],
 sobre:"Harry descobre que é um bruxo e vai para Hogwarts.",
 imagem:"imagens/harrypoter-capa.jpg",
-disponivel:true
+disponivel:true,
+lido:false,
+quero:false,
+lendo:false,
+favorito:false
 },
 
 {
@@ -82,7 +90,11 @@ faixaEtaria:"adulto",
 temas:["politica","controle"],
 sobre:"Um regime totalitário controla tudo.",
 imagem:"imagens/1984.jpg",
-disponivel:true
+disponivel:true,
+lido:false,
+quero:false,
+lendo:false,
+favorito:false
 },
 
 {
@@ -102,13 +114,17 @@ faixaEtaria:"adulto",
 temas:["vampiros","mistério"],
 sobre:"O clássico vampiro da literatura.",
 imagem:"imagens/dracula.jpg",
-disponivel:true
+disponivel:true,
+lido:false,
+quero:false,
+lendo:false,
+favorito:false
 }
 
 ];
 
 /* =========================
-🧠 INICIALIZAÇÃO
+INICIALIZAÇÃO
 ========================= */
 
 if(!localStorage.getItem("biblioteca")){
@@ -119,7 +135,7 @@ JSON.stringify(livrosPadrao)
 }
 
 /* =========================
-⭐ GERAR ESTRELAS
+GERAR ESTRELAS
 ========================= */
 
 function gerarEstrelas(nota){
@@ -143,7 +159,48 @@ return estrelas;
 }
 
 /* =========================
-🔄 RENDERIZAR LIVROS
+FUNÇAO QUERO LER E FAVORITO
+========================= */
+function toggleQuero(id){
+
+let livros = JSON.parse(localStorage.getItem("biblioteca"));
+
+let livro = livros.find(l => l.id === id);
+
+// 🔁 INVERTE VALOR
+livro.quero = !livro.quero;
+
+// salva
+localStorage.setItem("biblioteca", JSON.stringify(livros));
+
+// atualiza tela
+renderizar();
+
+}
+
+function toggleFavorito(id){
+
+let livros = JSON.parse(localStorage.getItem("biblioteca"));
+
+let livro = livros.find(l => l.id === id);
+
+// 🔁 INVERTE VALOR
+livro.favorito = !livro.favorito;
+
+// salva
+localStorage.setItem("biblioteca", JSON.stringify(livros));
+
+// atualiza tela
+renderizar();
+
+}
+
+
+
+
+
+/* =========================
+RENDERIZAR LIVROS
 ========================= */
 
 function renderizar(){
@@ -152,29 +209,85 @@ const livros = JSON.parse(
 localStorage.getItem("biblioteca")
 );
 
-const busca = document
-.getElementById("pesq")
-.value
-.toLowerCase();
-
-const genero = document
-.getElementById("filtro")
-.value;
-
 const html = livros
 
 .filter(livro => {
 
-const filtroBusca =
+// BUSCA
+const busca = document.getElementById("pesq").value.toLowerCase();
 
-livro.titulo.toLowerCase().includes(busca)
-||
+// FILTROS
+const genero = document.getElementById("filtro").value;
+const subgenero = document.getElementById("sgen").value;
+const tipo = document.getElementById("tipo").value;
+const faixa = document.getElementById("Fet").value;
+const notaMin = Number(document.getElementById("nota").value);
+
+// TEMAS
+const temasSelecionados = Array.from(
+document.querySelectorAll("#tema input:checked")
+).map(t => t.value.toLowerCase());
+
+// PESSOAIS
+const pessoaisSelecionados = Array.from(
+document.querySelectorAll("#pessoais input:checked")
+).map(p => p.value);
+
+// BUSCA
+const filtroBusca =
+livro.titulo.toLowerCase().includes(busca) ||
 livro.autor.toLowerCase().includes(busca);
 
-const filtroGenero =
-!genero || livro.genero === genero;
+// FILTROS
+const filtroGenero = !genero || livro.genero === genero;
+const filtroSub = !subgenero || livro.subgenero === subgenero;
+const filtroTipo = !tipo || livro.tipo === tipo;
+const filtroFaixa = !faixa || livro.faixaEtaria === faixa;
 
-return filtroBusca && filtroGenero;
+// NOTA
+const filtroNota = livro.nota >= notaMin;
+
+// TEMAS
+const filtroTemas =
+temasSelecionados.length === 0 ||
+temasSelecionados.some(t => livro.temas.includes(t));
+
+// PESSOAIS
+const filtroPessoais =
+pessoaisSelecionados.length === 0 ||
+pessoaisSelecionados.some(p => livro[p] === true);
+
+// ✅ FINAL
+return (
+filtroBusca &&
+filtroGenero &&
+filtroSub &&
+filtroTipo &&
+filtroFaixa &&
+filtroNota &&
+filtroTemas &&
+filtroPessoais
+);
+
+})
+
+.sort((a, b) => {
+
+const ordem = document.getElementById("ord").value;
+
+if(ordem === "az"){
+return a.titulo.localeCompare(b.titulo);
+}
+
+if(ordem === "nota"){
+return b.nota - a.nota;
+}
+
+if(ordem === "recente"){
+return Number(b.dataPublicacao) - Number(a.dataPublicacao);
+}
+
+return 0;
 
 })
 
@@ -202,25 +315,30 @@ ${livro.genero} ${livro.subgenero ? "/ " + livro.subgenero : ""}
 
 <p class="autor">${livro.autor}</p>
 
-<p class="sobre">
-${livro.sobre}
-</p>
+<p class="sobre">${livro.sobre}</p>
 
 </div>
 
 <div class="btn-info">
 
-<button
-class="emprestar"
-onclick="emprestarLivro(${livro.id})"
-
->
-
+<button class="emprestar"
+onclick="emprestarLivro(${livro.id})">
 ${livro.disponivel ? "Emprestar" : "Indisponível"} </button>
 
-<button class="ver-mais">
-Ver mais
+<button class="ver-mais">Ver mais</button>
+
+<button class="icons" onclick="toggleQuero(${livro.id})">
+  <img src="${livro.quero 
+    ? 'imagens/quero-cheia-removebg-preview.png' 
+    : 'imagens/quero-oca-removebg-preview.png'}">
 </button>
+
+<button class="icons" onclick="toggleFavorito(${livro.id})">
+  <img src="${livro.favorito 
+    ? 'imagens/star-cheia-removebg-preview.png' 
+    : 'imagens/star-oca-removebg-preview.png'}">
+</button>
+
 
 </div>
 
@@ -230,24 +348,50 @@ Ver mais
 
 `).join("");
 
-document.getElementById("book").innerHTML = html;
 
+document.getElementById("book").innerHTML = html;
 }
 
 /* =========================
-🔍 EVENTOS
+EVENTOS
 ========================= */
 
+// busca (digitação)
 document
 .getElementById("pesq")
 .addEventListener("input", renderizar);
 
-document
-.getElementById("filtro")
-.addEventListener("change", renderizar);
+// TODOS OS SELECTS
+document.querySelectorAll("select").forEach(el => {
+el.addEventListener("change", renderizar);
+});
+
+// CHECKBOXES (temas + pessoais)
+document.querySelectorAll("#tema input, #pessoais input").forEach(el => {
+el.addEventListener("change", renderizar);
+});
+
+// BOTÃO REMOVER FILTROS
+document.getElementById("dlt").addEventListener("click", () => {
+
+// limpa selects
+document.querySelectorAll("select").forEach(s => s.value = "");
+
+// limpa checkboxes
+document.querySelectorAll("input[type='checkbox']").forEach(c => c.checked = false);
+
+// limpa busca
+document.getElementById("pesq").value = "";
+
+// renderiza tudo de novo
+renderizar();
+
+});
+
+
 
 /* =========================
-📖 EMPRESTAR LIVRO
+EMPRESTAR LIVRO
 ========================= */
 
 function emprestarLivro(id){
@@ -288,8 +432,9 @@ renderizar();
 }
 
 /* =========================
-🚀 INICIAR
+INICIAR
 ========================= */
 
 renderizar();
 
+ 

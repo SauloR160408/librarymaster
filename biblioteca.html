@@ -30,14 +30,14 @@
     <main>
       <aside id="filter">
         <div id="nav-fil">
-            <h2>Filtros</h2>
-    
-            <div class="tabs">
-              <button class="tab active" data-tab="conteudo">Conteúdo</button>
-              <button class="tab" data-tab="avaliacao">Avaliação</button>
-              <button class="tab" data-tab="pessoais">Pessoais</button>
-              <button class="tab" data-tab="ordenacao">Ordenar</button>
-            </div>
+          <h2>Filtros</h2>
+
+          <div class="tabs">
+            <button class="tab active" data-tab="conteudo">Conteúdo</button>
+            <button class="tab" data-tab="avaliacao">Avaliação</button>
+            <button class="tab" data-tab="pessoais">Pessoais</button>
+            <button class="tab" data-tab="ordenacao">Ordenar</button>
+          </div>
         </div>
 
         <div class="conteudo-abas">
@@ -65,64 +65,81 @@
             </select>
 
             <label>Subgênero</label>
-            <select></select>
+            <select id="sgen">
+              <option value="">todos</option>
+              <option value="magia">Magia</option>
+              <option value="politico">Político</option>
+              <option value="gotico">Gótico</option>
+              <option value="romance">Romance</option>
+              <option value="aventura">Aventura</option>
+              <option value="suspense">Suspense</option>
+              <option value="drama">Drama</option>
+            </select>
 
             <label>Tipo</label>
-            <select>
-              <option>Série</option>
-              <option>Livro único</option>
+            <select id="tipo">
+              <option value="">todos</option>
+              <option value="serie">Série</option>
+              <option value="livro unico">Livro único</option>
             </select>
 
             <label>Faixa etária</label>
-            <select></select>
+            <select id="Fet">
+              <option value="">todos</option>
+              <option value="infantil">Infantil</option>
+              <option value="juvenil">Juvenil</option>
+              <option value="adulto">Adulto</option>
+            </select>
 
             <label>Temas</label>
-            <div class="checkbox-group">
-              <label><input type="checkbox" /> Magia</label>
-              <label><input type="checkbox" /> Mistério</label>
-              <label><input type="checkbox" /> Romance</label>
+            <div class="checkbox-group" id="tema">
+              <label><input type="checkbox" value="magia" /> Magia</label>
+              <label><input type="checkbox" value="mistério" /> Mistério</label>
+              <label><input type="checkbox" value="romance" /> Romance</label>
+              <label><input type="checkbox" value="aventura" /> Aventura</label>
+              <label><input type="checkbox" value="politica" /> Política</label>
             </div>
           </div>
 
           <!-- AVALIAÇÃO -->
           <div class="aba" id="avaliacao">
             <label>Nota mínima</label>
-            <select>
-                <option value="todos">todos</option>
-              <option value="1+">1+</option>
-              <option value="2+">2+</option>
-              <option value="3+">3+</option>
+            <select id="nota">
+              <option value="0">todos</option>
+              <option value="1">1+</option>
+              <option value="2">2+</option>
+              <option value="3">3+</option>
               <option value="4">4+</option>
             </select>
 
             <label>Popularidade</label>
-            <select>
-              <option>Mais populares</option>
-              <option>Mais avaliados</option>
+            <select id="pop">
+              <option value="">padrão</option>
+              <option value="popular">Mais populares</option>
+              <option value="avaliados">Mais avaliados</option>
             </select>
           </div>
 
           <!-- PESSOAIS -->
           <div class="aba" id="pessoais">
-            <label><input type="checkbox" /> Já lidos</label>
-            <label><input type="checkbox" /> Quero ler</label>
-            <label><input type="checkbox" /> Lendo agora</label>
-            <label><input type="checkbox" /> Favoritos</label>
+            <label><input type="checkbox" value="lido" /> Já lidos</label>
+            <label><input type="checkbox" value="quero" /> Quero ler</label>
+            <label><input type="checkbox" value="lendo" /> Lendo agora</label>
+            <label><input type="checkbox" value="favorito" /> Favoritos</label>
           </div>
 
           <!-- ORDENAÇÃO -->
           <div class="aba" id="ordenacao">
             <label>Ordenar por</label>
-            <select>
-              <option>A-Z</option>
-              <option>Maior nota</option>
-              <option>Mais recentes</option>
-              <option>Mais populares</option>
+            <select id="ord">
+              <option value="az">A-Z</option>
+              <option value="nota">Maior nota</option>
+              <option value="recente">Mais recentes</option>
             </select>
           </div>
+
           <div id="botoes">
             <button id="dlt">Remover filtro</button>
-            <button id="apli">Aplicar filtros</button>
           </div>
         </div>
       </aside>
@@ -228,9 +245,6 @@
         <p>Library Master</p>
       </div>
     </footer>
-    <script src="JS/script.js">
-
-      
-    </script>
+    <script src="JS/script.js"></script>
   </body>
 </html>

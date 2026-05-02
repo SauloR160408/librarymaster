@@ -112,8 +112,7 @@ select {
   gap: 15px;
   padding: 10px;
 }
-#botoes #dlt,
-#apli {
+#botoes #dlt{
   background: var(--cor2);
   border: none;
   padding: 8px;
@@ -122,8 +121,7 @@ select {
   border-radius: 5px;
   transition: 0.5s;
 }
-#botoes #dlt:hover,
-#apli:hover {
+#botoes #dlt:hover{
   color: var(--cor2);
   background-color: var(--cor3);
 }
@@ -145,11 +143,16 @@ select {
   height: 300px;
   display: flex;
   box-shadow: var(--sombra2);
-  border-radius: 5px;
+  border-radius: 10px;
 }
 .book img {
   width: 180px;
-  border-radius: 5px;
+  border-radius: 2px;
+  max-height: 270px;
+  transition: 0.2s;
+}
+.book img:hover{
+  transform: scale(1.08);
 }
 .imagem/*parte da imagem*/ {
   display: flex;
@@ -224,3 +227,17 @@ select {
   color: var(--cor2);
   background-color: var(--cor3);
 }
+
+.btn-info .icons{
+background-color: transparent;
+transition: 0.2s;
+}
+.btn-info .icons:hover{
+transform: scale(1.2);
+background-color: transparent;
+
+}
+.icons img{
+  width: 22px;
+}
+
