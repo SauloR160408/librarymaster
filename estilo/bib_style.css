@@ -6,6 +6,7 @@
   --fonteprin: "Open Sans", sans-serif;
   --sombra: 0 10px 30px rgba(0, 0, 0, 0.508);
   --sombra2: 10px 5px 20px 0px rgba(0, 0, 0, 0.508);
+  --sombra-l:0px 0px 12px 2px rgba(0, 0, 0, 0.555);
 }
 
 main {
@@ -35,7 +36,7 @@ main {
 
   overflow-y: auto;
 
-  box-shadow: var(--sombra2);
+  box-shadow: var(--sombra-l);
   z-index: 10;
 }
 
@@ -142,7 +143,7 @@ select {
   width: 1000px;
   height: 300px;
   display: flex;
-  box-shadow: var(--sombra2);
+  box-shadow: var(--sombra-l);
   border-radius: 10px;
 }
 .book img {
@@ -241,3 +242,12 @@ background-color: transparent;
   width: 22px;
 }
 
+
+
+/*conteiner do ver mais*/
+.ver-mais{
+  background-color: rgba(0, 0, 0, 0.574);
+  height: 100vh;
+  flex: 1;
+  
+}
