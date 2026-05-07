@@ -192,6 +192,7 @@ select {
     width: 10px;
     margin: 1px;
 }
+
 .cab-b {
   display: flex;
   flex-direction: column;
@@ -261,14 +262,20 @@ background-color: transparent;
 }
 
 .modal-livro{
-  background: var(--cor4); /* Usando a cor do seu tema em vez de white */
+  background: var(--cor4); 
   color: var(--cor2);
   padding: 30px;
   border-radius: 15px;
-  max-width: 600px;
-  width: 90%;
+
+  max-width: 900px;
+  min-width: 700px;
+max-height: 600px;
+min-height: 500px;
+
   box-shadow: var(--sombra);
-  position: relative; /* para o botão fechar se posicionar melhor */
+  position: relative; 
+
+  overflow-y: auto;
 }
 
 .modal-livro img{
@@ -283,10 +290,13 @@ background-color: transparent;
   color: var(--cor3);
   border: none;
   padding: 5px 10px;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
+
+  
 }
 
 .hidden{
   display: none;
 }
+

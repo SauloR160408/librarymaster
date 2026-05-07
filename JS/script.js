@@ -413,18 +413,19 @@ function verMais(id) {
 
       <h2>${livro.titulo}</h2>
 
+      <p class="sobre"><strong>Sinopse:</strong><br> ${livro.sobre}</p>
+
       <p><strong>Autor:</strong> ${livro.autor}</p>
       <p><strong>Gênero:</strong> ${livro.genero}</p>
       <p><strong>Páginas:</strong> ${livro.paginas}</p>
       <p><strong>Ano:</strong> ${livro.dataPublicacao}</p>
 
-      <p class="sobre">${livro.sobre}</p>
+      <h3>Comentários:</h3>
 
     </div>
   `;
 
   vm.classList.remove("hidden");
-
 }
 
 function addhid() {
