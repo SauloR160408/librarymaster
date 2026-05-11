@@ -261,39 +261,206 @@ background-color: transparent;
   align-items: center;
 }
 
-.modal-livro{
-  background: var(--cor4); 
+.modal-livro {
+  background: var(--cor3); 
   color: var(--cor2);
-  padding: 30px;
-  border-radius: 15px;
-
+  padding: 40px;
+  border-radius: 20px;
+  width: 90%;
   max-width: 900px;
-  min-width: 700px;
-max-height: 600px;
-min-height: 500px;
-
-  box-shadow: var(--sombra);
-  position: relative; 
-
+  max-height: 85vh;
   overflow-y: auto;
+  position: relative;
 }
 
-.modal-livro img{
-  width: 150px;
+.modal-grid {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 30px;
 }
 
-.fechar{
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: var(--cor2);
-  color: var(--cor3);
-  border: none;
-  padding: 5px 10px;
+.modal-esquerda img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: var(--sombra);
+  margin-bottom: 15px;
+}
+
+.meta-info p {
+  font-size: 0.9rem;
+  margin: 5px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding-bottom: 5px;
+}
+
+.autor-modal {
+  font-style: italic;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.tag-genero {
+  background: var(--fundo);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.sinopse-container {
+  margin: 25px 0;
+}
+
+.comentarios-section {
+  margin-top: 30px;
+  background: var(--cor4);
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.comentario-item {
+  background: white;
+  padding: 10px 15px;
   border-radius: 8px;
-  cursor: pointer;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  border-left: 4px solid var(--fundo);
+}
 
-  
+.add-comentario input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.add-comentario button {
+  background: var(--cor2);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.fechar {
+  top: 20px;
+  right: 20px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  font-weight: bold;
+  transition: transform 0.2s;
+
+  margin-bottom: 10px;
+}
+
+.fechar:hover {
+  transform: rotate(90deg);
+}
+
+.add-comentario {
+    display: flex;
+    flex-direction: column; /* Empilha no mobile ou telas menores */
+    gap: 10px;
+}
+
+@media (min-width: 600px) {
+    .add-comentario {
+        flex-direction: row; /* Alinha em linha em telas maiores */
+    }
+}
+
+#nova-nota-usuario {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background: white;
+    cursor: pointer;
+}
+
+
+/*conteiner do add/DEL book*/
+
+
+#add-book{
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+
+    width: 70px;
+    height: 70px;
+
+    border-radius: 50%;
+    border: none;
+
+    font-size: 40px;
+    cursor: pointer;
+    background: #380809;
+    color: white;
+    z-index: 999;
+}
+
+#modalAdd{
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0,0,0,.7);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 2000;
+}
+
+.modal-add-box{
+    width: 500px;
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.modal-add-box input,
+.modal-add-box textarea{
+    padding: 10px;
+}
+
+.book{
+    position: relative;
+}
+
+.remover-livro{
+    position: absolute;
+
+    right: 15px;
+    bottom: 15px;
+
+    border: none;
+
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    font-size: 20px;
+
+    background: crimson;
+    color: white;
 }
 
 .hidden{
