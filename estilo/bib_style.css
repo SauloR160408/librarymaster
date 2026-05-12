@@ -146,6 +146,16 @@ select {
   box-shadow: var(--sombra-l);
   border-radius: 10px;
 }
+
+.book {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book:hover {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
 .book img {
   width: 180px;
   border-radius: 2px;
@@ -351,13 +361,15 @@ background-color: transparent;
   height: 35px;
   border-radius: 50%;
   font-weight: bold;
-  transition: transform 0.2s;
-
+  transition: transform 0.4s;
   margin-bottom: 10px;
+
+  background-color: var(--cor2);
+  color: var(--cor3);
 }
 
 .fechar:hover {
-  transform: rotate(90deg);
+  transform: scale(1.15);
 }
 
 .add-comentario {
@@ -402,40 +414,113 @@ background-color: transparent;
     z-index: 999;
 }
 
-#modalAdd{
+#modalAdd {
     position: fixed;
-    inset: 0;
+    inset: 0; /* Isso cobre a tela toda */
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;    /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+    z-index: 3000;
+    padding: 20px; 
+}
 
-    background: rgba(0,0,0,.7);
+/* Container do Modal */
+.modal-add-box {
+    background: var(--cor3);
+    width: 100%;
+    max-width: 700px; /* Largura ideal para o formulário em duas colunas */
+    max-height: 90vh; /* Não deixa o modal ser maior que a altura da tela */
+    overflow-y: auto; /* Adiciona scroll interno se o formulário for longo */
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--fundo);
+    padding-bottom: 10px;
+        width: 100%;
 
+}
+
+.modal-header h2 {
+    color: var(--cor2);
+    margin: 0;
+}
+
+
+#fecharAdd {
+    /* Garanta que ele não tenha position: absolute se estiver quebrando o layout */
+    cursor: pointer;
+    background: var(--cor2);
+    color: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    z-index: 2000;
+    flex-shrink: 0; /* Impede o botão de esmagar */
+}
+/* Grid do Formulário */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas iguais */
+    gap: 15px;
+    width: 100%;
 }
 
-.modal-add-box{
-    width: 500px;
-    max-height: 90vh;
+.field.full { grid-column: span 2; }
 
-    overflow-y: auto;
-
-    background: white;
-
-    padding: 20px;
-
-    border-radius: 20px;
-
-    display: flex;
-    flex-direction: column;
-
+.field-triple {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
 }
 
-.modal-add-box input,
-.modal-add-box textarea{
-    padding: 10px;
+.modal-add-box input, 
+.modal-add-box textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--cor4);
+    border-radius: 8px;
+    background: white;
+    font-family: var(--fonteprin);
+    box-sizing: border-box; /* Evita que o input saia da caixa */
+}
+
+.modal-add-box textarea {
+    height: 100px;
+    resize: none;
+}
+
+/* Estilo do Botão Salvar */
+#salvarLivro {
+    margin-top: 25px;
+    background: var(--cor2);
+    color: var(--cor3);
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#salvarLivro:hover {
+    background: var(--fundo);
+    transform: scale(1.02);
 }
 
 .book{

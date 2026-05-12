@@ -230,12 +230,12 @@ z-index: 1001;
 
     font-size:15px;
 }
-#login input[type="submit"]{
+#login input[type="button"]{
     width: 50%;
     cursor: pointer;
     transition: 0.5s;
 }
-#login input[type="submit"]:hover{
+#login input[type="button"]:hover{
     color: var(--cor3);
     background-color: var(--cor2);
 }

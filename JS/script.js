@@ -126,202 +126,173 @@ const livrosPadrao = [
 /* =========================
 LOGIN
 ========================= */
+let botao = document.getElementById("Cadastrar");
 
-let botao = document.getElementById("Cadastrar")
+if (botao) {
+  botao.addEventListener("click", cadastrar);
+}
+function cadastrar() {
+  let nome = document.getElementById("nome").value;
+  let email = document.getElementById("email").value;
+  let matricula = document.getElementById("matricula").value;
 
-botao.addEventListener("click", cadastrar)
+  let tipo = "aluno";
 
-function cadastrar(){
+  // IDENTIFICA BIBLIOTECÁRIO
+  if (email.includes("@librarymaster.com") || matricula.startsWith("BIB")) {
+    tipo = "bibliotecario";
+  }
 
-    let nome = document.getElementById("nome").value
-    let email = document.getElementById("email").value
-    let matricula = document.getElementById("matricula").value
+  let usuario = {
+    id: Date.now(),
 
-    let tipo = "aluno"
+    nome: nome,
+    email: email,
+    matricula: matricula,
 
-    // IDENTIFICA BIBLIOTECÁRIO
-    if(
-        email.includes("@librarymaster.com")
-        ||
-        matricula.startsWith("BIB")
-    ){
-        tipo = "bibliotecario"
-    }
+    tipo: tipo,
 
-    let usuario = {
+    livrosLidos: [],
+    livrosSalvos: [],
+    emprestimos: [],
+    multas: [],
+  };
 
-        id: Date.now(),
+  // PEGA USUÁRIOS ANTIGOS
+  let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-        nome: nome,
-        email: email,
-        matricula: matricula,
+  usuarios.push(usuario);
 
-        tipo: tipo,
+  localStorage.setItem("usuarios", JSON.stringify(usuarios));
 
-        livrosLidos: [],
-        livrosSalvos: [],
-        emprestimos: [],
-        multas: []
-    }
+  // NOVO
+  localStorage.setItem("usuarioLogado", JSON.stringify(usuario));
 
-    // PEGA USUÁRIOS ANTIGOS
-    let usuarios =
-    JSON.parse(localStorage.getItem("usuarios")) || []
+  alert("Cadastro realizado!");
 
-    usuarios.push(usuario)
-
-    usuarios.push(usuario)
-
-localStorage.setItem(
-    "usuarios",
-    JSON.stringify(usuarios)
-)
-
-// NOVO
-localStorage.setItem(
-    "usuarioLogado",
-    JSON.stringify(usuario)
-)
-
-alert("Cadastro realizado!")
+  window.location.href = "index.html";
 }
 
-const usuarioLogado =
-JSON.parse(localStorage.getItem("usuarioLogado"))
+const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
 
-const bibliotecario =
-usuarioLogado?.tipo === "bibliotecario"
-
+const bibliotecario = usuarioLogado?.tipo === "bibliotecario";
 
 /* =========================
 ADD/DEL LIVRO
 ========================= */
 
-if(bibliotecario){
-    document
-    .getElementById("add-book")
-    .classList.remove("hidden")
+const addBook = document.getElementById("add-book");
+
+if (bibliotecario && addBook) {
+  addBook.classList.remove("hidden");
+
+  addBook.addEventListener("click", () => {
+    modalAdd.classList.remove("hidden");
+  });
+}
+const modalAdd = document.getElementById("modalAdd");
+
+if (addBook) {
+  addBook.addEventListener("click", () => {
+    modalAdd.classList.remove("hidden");
+  });
 }
 
-const modalAdd =
-document.getElementById("modalAdd")
+const fecharAdd = document.getElementById("fecharAdd");
 
-document
-.getElementById("add-book")
-.addEventListener("click", ()=>{
-
-    modalAdd.classList.remove("hidden")
-
-})
-
-document
-.getElementById("fecharAdd")
-.addEventListener("click", ()=>{
-
-    modalAdd.classList.add("hidden")
-
-})
-
-
-document
-.getElementById("salvarLivro")
-.addEventListener("click", adicionarLivro)
-
-function adicionarLivro(){
-
-    let livros =
-    JSON.parse(localStorage.getItem("biblioteca"))
-
-    const novoLivro = {
-
-        id: Date.now(),
-
-        nota: 0,
-        todasNotas: [],
-        comentarios: [],
-
-        titulo:
-        document.getElementById("novoTitulo").value,
-
-        serie: false,
-
-        genero:
-        document.getElementById("novoGenero").value,
-
-        subgenero:
-        document.getElementById("novoSubgenero").value,
-
-        autor:
-        document.getElementById("novoAutor").value,
-
-        paginas:
-        Number(document.getElementById("novoPaginas").value),
-
-        editora:
-        document.getElementById("novaEditora").value,
-
-        dataPublicacao:
-        document.getElementById("novoAno").value,
-
-        isbn:
-        document.getElementById("novoISBN").value,
-
-        tipo:
-        document.getElementById("novoTipo").value,
-
-        faixaEtaria:
-        document.getElementById("novaFaixa").value,
-
-        temas:
-        document.getElementById("novoTema")
-        .value
-        .split(","),
-
-        sobre:
-        document.getElementById("novaSobre").value,
-
-        imagem:
-        document.getElementById("novaImagem").value,
-
-        disponivel: true,
-
-        lido:false,
-        quero:false,
-        lendo:false,
-        favorito:false
-    }
-
-    livros.push(novoLivro)
-
-    localStorage.setItem(
-        "biblioteca",
-        JSON.stringify(livros)
-    )
-
-    modalAdd.classList.add("hidden")
-
-    renderizar()
+if (fecharAdd) {
+  fecharAdd.addEventListener("click", () => {
+    modalAdd.classList.add("hidden");
+  });
 }
 
-function removerLivro(id){
+document
+  .getElementById("salvarLivro")
+  .addEventListener("click", adicionarLivro);
 
-    const confirmar =
-    confirm("Deseja remover este livro?")
+function adicionarLivro() {
+  let livros = JSON.parse(localStorage.getItem("biblioteca"));
 
-    if(!confirmar) return
+  const novoLivro = {
+    id: Date.now(),
 
-    let livros =
-    JSON.parse(localStorage.getItem("biblioteca"))
+    nota: 0,
+    todasNotas: [],
+    comentarios: [],
 
-    livros =
-    livros.filter((livro)=> livro.id !== id)
+    titulo: document.getElementById("novoTitulo").value,
 
-    localStorage.setItem(
-        "biblioteca",
-        JSON.stringify(livros)
-    )
+    serie: false,
 
-    renderizar()
+    genero: document.getElementById("novoGenero").value,
+
+    subgenero: document.getElementById("novoSubgenero").value,
+
+    autor: document.getElementById("novoAutor").value,
+
+    paginas: Number(document.getElementById("novoPaginas").value),
+
+    editora: document.getElementById("novaEditora").value,
+
+    dataPublicacao: document.getElementById("novoAno").value,
+
+    isbn: document.getElementById("novoISBN").value,
+
+    tipo: document.getElementById("novoTipo").value,
+
+    faixaEtaria: document.getElementById("novaFaixa").value,
+
+    temas: document.getElementById("novoTema").value.split(","),
+
+    sobre: document.getElementById("novaSobre").value,
+
+    imagem: document.getElementById("novaImagem").value,
+
+    disponivel: true,
+
+    lido: false,
+    quero: false,
+    lendo: false,
+    favorito: false,
+  };
+
+  livros.push(novoLivro);
+
+  localStorage.setItem("biblioteca", JSON.stringify(livros));
+
+  // Pegar valores
+  const titulo = document.getElementById("novoTitulo").value;
+  const autor = document.getElementById("novoAutor").value;
+
+  // VALIDAÇÃO BÁSICA: Não deixa salvar se o título estiver vazio
+  if (!titulo || !autor) {
+    alert("Por favor, preencha pelo menos o Título e o Autor!");
+    return;
+  }
+
+  // LIMPAR CAMPOS após salvar
+  const campos = document.querySelectorAll(
+    ".modal-add-box input, .modal-add-box textarea",
+  );
+  campos.forEach((campo) => (campo.value = ""));
+
+  alert("Livro cadastrado com sucesso!");
+  modalAdd.classList.add("hidden");
+  renderizar();
+}
+
+function removerLivro(id) {
+  const confirmar = confirm("Deseja remover este livro?");
+
+  if (!confirmar) return;
+
+  let livros = JSON.parse(localStorage.getItem("biblioteca"));
+
+  livros = livros.filter((livro) => livro.id !== id);
+
+  localStorage.setItem("biblioteca", JSON.stringify(livros));
+
+  renderizar();
 }
 
 /* =========================
@@ -527,7 +498,9 @@ ${livro.disponivel ? "Emprestar" : "Indisponível"} </button>
 
 </div>
 
-${bibliotecario ? `
+${
+  bibliotecario
+    ? `
 
 <button
 class="remover-livro"
@@ -537,7 +510,9 @@ onclick="removerLivro(${livro.id})">
 
 </button>
 
-` : ""}
+`
+    : ""
+}
 
 </div>
 
@@ -615,7 +590,7 @@ INICIAR
 
 renderizar();
 
- function verMais(id) {
+function verMais(id) {
   const livros = JSON.parse(localStorage.getItem("biblioteca"));
   const livro = livros.find((l) => l.id === id);
 
@@ -633,7 +608,7 @@ renderizar();
         <div class="modal-esquerda">
           <img src="${livro.imagem}" alt="${livro.titulo}">
           <div class="meta-info">
-            <p><strong>ISBN:</strong> ${livro.isbn || 'Não informado'}</p>
+            <p><strong>ISBN:</strong> ${livro.isbn || "Não informado"}</p>
             <p><strong>Páginas:</strong> ${livro.paginas}</p>
             <p><strong>Ano:</strong> ${livro.dataPublicacao}</p>
           </div>
@@ -652,7 +627,7 @@ renderizar();
           <div class="comentarios-section">
             <h3>Comentários (${livro.comentarios.length})</h3>
             <div id="lista-comentarios">
-              ${livro.comentarios.map(c => `<div class="comentario-item">${c}</div>`).join('')}
+              ${livro.comentarios.map((c) => `<div class="comentario-item">${c}</div>`).join("")}
             </div>
             <div class="add-comentario">
     <select id="nova-nota-usuario">
@@ -675,39 +650,67 @@ renderizar();
 }
 
 function salvarComentario(id) {
-    const inputTexto = document.getElementById("novo-comentario");
-    const inputNota = document.getElementById("nova-nota-usuario");
-    
-    const texto = inputTexto.value.trim();
-    const notaDada = Number(inputNota.value);
+  const inputTexto = document.getElementById("novo-comentario");
+  const inputNota = document.getElementById("nova-nota-usuario");
 
-    if (texto === "") return;
+  const texto = inputTexto.value.trim();
+  const notaDada = Number(inputNota.value);
 
-    let livros = JSON.parse(localStorage.getItem("biblioteca"));
-    let livro = livros.find(l => l.id === id);
+  if (texto === "") return;
 
-    // 1. Inicializa os arrays se não existirem
-    if (!livro.comentarios) livro.comentarios = [];
-    if (!livro.todasNotas) livro.todasNotas = [livro.nota]; // Começa com a nota original
+  let livros = JSON.parse(localStorage.getItem("biblioteca"));
+  let livro = livros.find((l) => l.id === id);
 
-    // 2. Adiciona o novo comentário e a nova nota
-    livro.comentarios.push(texto);
-    livro.todasNotas.push(notaDada);
+  // 1. Inicializa os arrays se não existirem
+  if (!livro.comentarios) livro.comentarios = [];
+  if (!livro.todasNotas) livro.todasNotas = [livro.nota]; // Começa com a nota original
 
-    // 3. CÁLCULO DA MÉDIA ARREDONDADA
-    const soma = livro.todasNotas.reduce((acc, n) => acc + n, 0);
-    const media = soma / livro.todasNotas.length;
-    
-    // Math.round arredonda para o inteiro mais próximo (ex: 3.5 vira 4)
-    livro.nota = Math.round(media);
+  // 2. Adiciona o novo comentário e a nova nota
+  livro.comentarios.push(texto);
+  livro.todasNotas.push(notaDada);
 
-    // 4. Salva e atualiza a interface
-    localStorage.setItem("biblioteca", JSON.stringify(livros));
-    
-    renderizar(); // Atualiza a lista de livros no fundo
-    verMais(id);   // Atualiza o modal aberto
+  // 3. CÁLCULO DA MÉDIA ARREDONDADA
+  const soma = livro.todasNotas.reduce((acc, n) => acc + n, 0);
+  const media = soma / livro.todasNotas.length;
+
+  // Math.round arredonda para o inteiro mais próximo (ex: 3.5 vira 4)
+  livro.nota = Math.round(media);
+
+  // 4. Salva e atualiza a interface
+  localStorage.setItem("biblioteca", JSON.stringify(livros));
+
+  renderizar(); // Atualiza a lista de livros no fundo
+  verMais(id); // Atualiza o modal aberto
 }
 
 function addhid() {
   document.querySelector(".vm").classList.add("hidden");
+}
+
+const usuario = JSON.parse(localStorage.getItem("usuarioLogado"));
+
+if (usuario) {
+  // esconde área cadastro
+  const bv = document.getElementById("bv");
+
+  if (bv) {
+    bv.classList.add("hidden");
+  }
+
+  // mostra área pós login
+  const poscad = document.getElementById("poscad");
+
+  if (poscad) {
+    poscad.classList.remove("hidden");
+  }
+
+  // pega primeiro nome
+  const primeiroNome = usuario.nome.split(" ")[0];
+
+  // escreve na tela
+  const nomeuse = document.getElementById("nomeuse");
+
+  if (nomeuse) {
+    nomeuse.textContent = `Bem-vindo, ${primeiroNome}!`;
+  }
 }

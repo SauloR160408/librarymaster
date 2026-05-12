@@ -235,49 +235,71 @@
       <div class="vm hidden">
         <div class="espacovm"></div>
       </div>
-      <button id="add-book" class="hidden">
-  +
-</button>
-<div id="modalAdd" class="hidden">
+      <button id="add-book" class="hidden">+</button>
+      <div class="modal-add-box hidden">
+        <div class="modal-header">
+          <h2>Adicionar Novo Livro</h2>
+          <button id="fecharAdd">&times;</button>
+        </div>
 
-  <div class="modal-add-box">
+        <div class="form-grid">
+          <div class="field full">
+            <input type="text" id="novoTitulo" placeholder="Título do Livro" />
+          </div>
 
-    <button id="fecharAdd" >X</button>
+          <div class="field">
+            <input type="text" id="novoAutor" placeholder="Autor" />
+          </div>
+          <div class="field">
+            <input type="text" id="novaEditora" placeholder="Editora" />
+          </div>
 
-    <h2>Adicionar Livro</h2>
+          <div class="field">
+            <input type="text" id="novoGenero" placeholder="Gênero" />
+          </div>
+          <div class="field">
+            <input type="text" id="novoSubgenero" placeholder="Subgênero" />
+          </div>
 
-    <input type="text" id="novoTitulo" placeholder="Título">
-    <input type="text" id="novoAutor" placeholder="Autor">
-    <input type="text" id="novoGenero" placeholder="Gênero">
-    <input type="text" id="novoSubgenero" placeholder="Subgênero">
+          <div class="field-triple">
+            <input type="number" id="novoPaginas" placeholder="Páginas" />
+            <input type="text" id="novoAno" placeholder="Ano" />
+            <input type="text" id="novoISBN" placeholder="ISBN" />
+          </div>
 
-    <input type="number" id="novoPaginas" placeholder="Páginas">
+          <div class="field">
+            <input type="text" id="novoTipo" placeholder="Tipo (Ex: Série)" />
+          </div>
+          <div class="field">
+            <input type="text" id="novaFaixa" placeholder="Faixa Etária" />
+          </div>
 
-    <input type="text" id="novaEditora" placeholder="Editora">
+          <div class="field full">
+            <input
+              type="text"
+              id="novoTema"
+              placeholder="Temas (separe por vírgula)"
+            />
+          </div>
 
-    <input type="text" id="novoAno" placeholder="Ano">
+          <div class="field full">
+            <textarea
+              id="novaSobre"
+              placeholder="Sinopse / Resumo do livro"
+            ></textarea>
+          </div>
 
-    <input type="text" id="novoISBN" placeholder="ISBN">
+          <div class="field full">
+            <input
+              type="text"
+              id="novaImagem"
+              placeholder="URL da Imagem da Capa"
+            />
+          </div>
+        </div>
 
-    <input type="text" id="novoTipo" placeholder="Tipo">
-
-    <input type="text" id="novaFaixa" placeholder="Faixa etária">
-
-    <input type="text" id="novoTema" placeholder="Temas separados por vírgula">
-
-    <textarea id="novaSobre"
-    placeholder="Sinopse"></textarea>
-
-    <input type="text" id="novaImagem"
-    placeholder="Caminho da imagem">
-
-    <button id="salvarLivro">
-      Adicionar Livro
-    </button>
-
-  </div>
-
-</div>
+        <button id="salvarLivro">Salvar na Biblioteca</button>
+      </div>
     </main>
     <footer id="rod">
       <div id="soc-mid">
