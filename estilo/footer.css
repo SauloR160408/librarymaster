@@ -1,0 +1,27 @@
+:root {
+  --fundo: #521c1c;
+  --cor2: #380809;
+  --cor3: #efe6cf;
+  --cor4: #d9c8a9;
+  --fonteprin: "Open Sans", sans-serif;
+  --sombra: 0 10px 30px rgba(0, 0, 0, 0.508);
+  --sombra2: 10px 5px 20px 0px rgba(0, 0, 0, 0.508);
+  --sombra-l: 0px 0px 12px 2px rgba(0, 0, 0, 0.555);
+}
+
+#rod {
+  padding: 10px 20px;
+  color: var(--cor3);
+  background-color: var(--cor2);
+  font-family: "Open Sans";
+
+  z-index: 1001;
+}
+#soc-mid {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+#rod img {
+  width: 30px;
+}

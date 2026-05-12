@@ -6,7 +6,7 @@
   --fonteprin: "Open Sans", sans-serif;
   --sombra: 0 10px 30px rgba(0, 0, 0, 0.508);
   --sombra2: 10px 5px 20px 0px rgba(0, 0, 0, 0.508);
-  --sombra-l:0px 0px 12px 2px rgba(0, 0, 0, 0.555);
+  --sombra-l: 0px 0px 12px 2px rgba(0, 0, 0, 0.555);
 }
 
 main {
@@ -86,7 +86,7 @@ main {
 .aba.active {
   display: flex;
   flex-direction: column;
-  flex: 1; 
+  flex: 1;
   padding: 10px;
 }
 label {
@@ -107,13 +107,13 @@ select {
   margin-top: 5px;
 }
 #botoes {
-  margin-top: auto; 
+  margin-top: auto;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   gap: 15px;
   padding: 10px;
 }
-#botoes #dlt{
+#botoes #dlt {
   background: var(--cor2);
   border: none;
   padding: 8px;
@@ -122,7 +122,7 @@ select {
   border-radius: 5px;
   transition: 0.5s;
 }
-#botoes #dlt:hover{
+#botoes #dlt:hover {
   color: var(--cor2);
   background-color: var(--cor3);
 }
@@ -148,7 +148,9 @@ select {
 }
 
 .book {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .book:hover {
@@ -162,7 +164,7 @@ select {
   max-height: 270px;
   transition: 0.2s;
 }
-.book img:hover{
+.book img:hover {
   transform: scale(1.08);
 }
 .imagem/*parte da imagem*/ {
@@ -198,9 +200,9 @@ select {
 .info p {
   margin: 0;
 }
-.stars img{
-    width: 10px;
-    margin: 1px;
+.stars img {
+  width: 10px;
+  margin: 1px;
 }
 
 .cab-b {
@@ -240,23 +242,20 @@ select {
   background-color: var(--cor3);
 }
 
-.btn-info .icons{
-background-color: transparent;
-transition: 0.2s;
+.btn-info .icons {
+  background-color: transparent;
+  transition: 0.2s;
 }
-.btn-info .icons:hover{
-transform: scale(1.2);
-background-color: transparent;
-
+.btn-info .icons:hover {
+  transform: scale(1.2);
+  background-color: transparent;
 }
-.icons img{
+.icons img {
   width: 22px;
 }
 
-
-
 /*conteiner do ver mais*/
-.vm{
+.vm {
   position: fixed;
   top: 0;
   left: 0;
@@ -265,14 +264,14 @@ background-color: transparent;
   height: 100%;
   z-index: 2000;
 
-  background: rgba(0,0,0,0.7);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .modal-livro {
-  background: var(--cor3); 
+  background: var(--cor3);
   color: var(--cor2);
   padding: 40px;
   border-radius: 20px;
@@ -299,7 +298,7 @@ background-color: transparent;
 .meta-info p {
   font-size: 0.9rem;
   margin: 5px 0;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding-bottom: 5px;
 }
 
@@ -373,182 +372,179 @@ background-color: transparent;
 }
 
 .add-comentario {
-    display: flex;
-    flex-direction: column; /* Empilha no mobile ou telas menores */
-    gap: 10px;
+  display: flex;
+  flex-direction: column; /* Empilha no mobile ou telas menores */
+  gap: 10px;
 }
 
 @media (min-width: 600px) {
-    .add-comentario {
-        flex-direction: row; /* Alinha em linha em telas maiores */
-    }
+  .add-comentario {
+    flex-direction: row; /* Alinha em linha em telas maiores */
+  }
 }
 
 #nova-nota-usuario {
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    background: white;
-    cursor: pointer;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
 }
-
 
 /*conteiner do add/DEL book*/
 
+#add-book {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
 
-#add-book{
-    position: fixed;
-    right: 30px;
-    bottom: 30px;
+  width: 70px;
+  height: 70px;
 
-    width: 70px;
-    height: 70px;
+  border-radius: 50%;
+  border: none;
 
-    border-radius: 50%;
-    border: none;
-
-    font-size: 40px;
-    cursor: pointer;
-    background: #380809;
-    color: white;
-    z-index: 999;
+  font-size: 40px;
+  cursor: pointer;
+  background: #380809;
+  color: white;
+  z-index: 999;
 }
 
 #modalAdd {
-    position: fixed;
-    inset: 0; /* Isso cobre a tela toda */
-    background: rgba(0, 0, 0, 0.75);
-    display: flex;
-    align-items: center;    /* Centraliza verticalmente */
-    justify-content: center; /* Centraliza horizontalmente */
-    z-index: 3000;
-    padding: 20px; 
+  position: fixed;
+  inset: 0; /* Isso cobre a tela toda */
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  z-index: 3000;
+  padding: 20px;
 }
 
 /* Container do Modal */
 .modal-add-box {
-    background: var(--cor3);
-    width: 100%;
-    max-width: 700px; /* Largura ideal para o formulário em duas colunas */
-    max-height: 90vh; /* Não deixa o modal ser maior que a altura da tela */
-    overflow-y: auto; /* Adiciona scroll interno se o formulário for longo */
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    position: relative;
-    display: flex;
-    flex-direction: column;
+  background: var(--cor3);
+  width: 100%;
+  max-width: 700px; /* Largura ideal para o formulário em duas colunas */
+  max-height: 90vh; /* Não deixa o modal ser maior que a altura da tela */
+  overflow-y: auto; /* Adiciona scroll interno se o formulário for longo */
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 .modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    border-bottom: 2px solid var(--fundo);
-    padding-bottom: 10px;
-        width: 100%;
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--fundo);
+  padding-bottom: 10px;
+  width: 100%;
 }
 
 .modal-header h2 {
-    color: var(--cor2);
-    margin: 0;
+  color: var(--cor2);
+  margin: 0;
 }
 
-
 #fecharAdd {
-    /* Garanta que ele não tenha position: absolute se estiver quebrando o layout */
-    cursor: pointer;
-    background: var(--cor2);
-    color: white;
-    border: none;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0; /* Impede o botão de esmagar */
+  /* Garanta que ele não tenha position: absolute se estiver quebrando o layout */
+  cursor: pointer;
+  background: var(--cor2);
+  color: white;
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /* Impede o botão de esmagar */
 }
 /* Grid do Formulário */
 .form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Duas colunas iguais */
-    gap: 15px;
-    width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Duas colunas iguais */
+  gap: 15px;
+  width: 100%;
 }
 
-.field.full { grid-column: span 2; }
+.field.full {
+  grid-column: span 2;
+}
 
 .field-triple {
-    grid-column: span 2;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
 }
 
-.modal-add-box input, 
+.modal-add-box input,
 .modal-add-box textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid var(--cor4);
-    border-radius: 8px;
-    background: white;
-    font-family: var(--fonteprin);
-    box-sizing: border-box; /* Evita que o input saia da caixa */
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--cor4);
+  border-radius: 8px;
+  background: white;
+  font-family: var(--fonteprin);
+  box-sizing: border-box; /* Evita que o input saia da caixa */
 }
 
 .modal-add-box textarea {
-    height: 100px;
-    resize: none;
+  height: 100px;
+  resize: none;
 }
 
 /* Estilo do Botão Salvar */
 #salvarLivro {
-    margin-top: 25px;
-    background: var(--cor2);
-    color: var(--cor3);
-    border: none;
-    padding: 15px;
-    border-radius: 10px;
-    font-weight: bold;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
+  margin-top: 25px;
+  background: var(--cor2);
+  color: var(--cor3);
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 #salvarLivro:hover {
-    background: var(--fundo);
-    transform: scale(1.02);
+  background: var(--fundo);
+  transform: scale(1.02);
 }
 
-.book{
-    position: relative;
+.book {
+  position: relative;
 }
 
-.remover-livro{
-    position: absolute;
+.remover-livro {
+  position: absolute;
 
-    right: 15px;
-    bottom: 15px;
+  right: 15px;
+  bottom: 15px;
 
-    border: none;
+  border: none;
 
-    width: 45px;
-    height: 45px;
+  width: 45px;
+  height: 45px;
 
-    border-radius: 50%;
+  border-radius: 50%;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    font-size: 20px;
+  font-size: 20px;
 
-    background: crimson;
-    color: white;
+  background: crimson;
+  color: white;
 }
 
-.hidden{
+.hidden {
   display: none;
 }
-
