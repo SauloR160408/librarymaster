@@ -69,6 +69,15 @@ body {
   color: var(--cor3);
 }
 
+#poscad {
+  margin-bottom: 80px;
+}
+#poscad h2 {
+  color: var(--cor3);
+  font-size: 48px; /* Tamanho maior como na imagem */
+  font-weight: normal;
+  margin-bottom: 25px;
+
 /*Area de estilo do login*/
 #areacad {
   height: 100vh;

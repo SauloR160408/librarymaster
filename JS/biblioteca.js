@@ -51,7 +51,7 @@ function renderizar() {
             <button class="icons" onclick="toggleFavorito(${livro.id})"><img src="${livro.favorito ? 'imagens/star-cheia-removebg-preview.png' : 'imagens/star-oca-removebg-preview.png'}"></button>
           </div>
         </div>
-        ${bibliotecario ? `<button class="remover-livro" onclick="removerLivro(${livro.id})">🗑</button>` : ""}
+        ${bibliotecario ? `<button class="remover-livro" onclick="removerLivro(${livro.id})"><img src="imagens/lixeira-icon-removebg-preview.png" alt="icon lixeira"></button>` : ""}
       </div>`)
     .join("");
 

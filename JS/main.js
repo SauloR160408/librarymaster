@@ -22,7 +22,7 @@ if (usuario) {
   const poscad = document.getElementById("poscad");
   if (poscad) poscad.classList.remove("hidden");
   const nomeuse = document.getElementById("nomeuse");
-  if (nomeuse) nomeuse.textContent = `Bem-vindo, ${usuario.nome.split(" ")[0]}!`;
+  if (nomeuse) nomeuse.innerHTML = `<strong>Bem-vindo, ${usuario.nome.split(" ")[0]}!</strong><br>Venha desbravar o Library Master!`;
 }
 
 // 4. Lógica de Bibliotecário (Botão Add)
