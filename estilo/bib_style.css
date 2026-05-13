@@ -254,6 +254,8 @@ select {
   width: 22px;
 }
 
+
+
 /*conteiner do ver mais*/
 .vm {
   position: fixed;
@@ -541,10 +543,13 @@ select {
 
   font-size: 20px;
 
-  background: crimson;
-  color: white;
+  background: var(--cor2);
+}
+.remover-livro img{
+  width: 20px;
 }
 
+
 .hidden {
-  display: none;
+  display: none !important;
 }

@@ -151,70 +151,74 @@
       <div class="vm hidden">
         <div class="espacovm"></div>
       </div>
+
       <button id="add-book" class="hidden">+</button>
-      <div class="modal-add-box hidden">
-        <div class="modal-header">
-          <h2>Adicionar Novo Livro</h2>
-          <button id="fecharAdd">&times;</button>
+      <div id="modalAdd" class="hidden">
+        <div class="modal-add-box" >
+          <div class="modal-header">
+            <h2>Adicionar Novo Livro</h2>
+            <button id="fecharAdd" >&times;</button>
+          </div>
+  
+          <div class="form-grid">
+            <div class="field full">
+              <input type="text" id="novoTitulo" placeholder="Título do Livro" />
+            </div>
+  
+            <div class="field">
+              <input type="text" id="novoAutor" placeholder="Autor" />
+            </div>
+            <div class="field">
+              <input type="text" id="novaEditora" placeholder="Editora" />
+            </div>
+  
+            <div class="field">
+              <input type="text" id="novoGenero" placeholder="Gênero" />
+            </div>
+            <div class="field">
+              <input type="text" id="novoSubgenero" placeholder="Subgênero" />
+            </div>
+  
+            <div class="field-triple">
+              <input type="number" id="novoPaginas" placeholder="Páginas" />
+              <input type="text" id="novoAno" placeholder="Ano" />
+              <input type="text" id="novoISBN" placeholder="ISBN" />
+            </div>
+  
+            <div class="field">
+              <input type="text" id="novoTipo" placeholder="Tipo (Ex: Série)" />
+            </div>
+            <div class="field">
+              <input type="text" id="novaFaixa" placeholder="Faixa Etária" />
+            </div>
+  
+            <div class="field full">
+              <input
+                type="text"
+                id="novoTema"
+                placeholder="Temas (separe por vírgula)"
+              />
+            </div>
+  
+            <div class="field full">
+              <textarea
+                id="novaSobre"
+                placeholder="Sinopse / Resumo do livro"
+              ></textarea>
+            </div>
+  
+            <div class="field full">
+              <input
+                type="text"
+                id="novaImagem"
+                placeholder="URL da Imagem da Capa"
+              />
+            </div>
+          </div>
+  
+          <button id="salvarLivro">Salvar na Biblioteca</button>
         </div>
 
-        <div class="form-grid">
-          <div class="field full">
-            <input type="text" id="novoTitulo" placeholder="Título do Livro" />
-          </div>
-
-          <div class="field">
-            <input type="text" id="novoAutor" placeholder="Autor" />
-          </div>
-          <div class="field">
-            <input type="text" id="novaEditora" placeholder="Editora" />
-          </div>
-
-          <div class="field">
-            <input type="text" id="novoGenero" placeholder="Gênero" />
-          </div>
-          <div class="field">
-            <input type="text" id="novoSubgenero" placeholder="Subgênero" />
-          </div>
-
-          <div class="field-triple">
-            <input type="number" id="novoPaginas" placeholder="Páginas" />
-            <input type="text" id="novoAno" placeholder="Ano" />
-            <input type="text" id="novoISBN" placeholder="ISBN" />
-          </div>
-
-          <div class="field">
-            <input type="text" id="novoTipo" placeholder="Tipo (Ex: Série)" />
-          </div>
-          <div class="field">
-            <input type="text" id="novaFaixa" placeholder="Faixa Etária" />
-          </div>
-
-          <div class="field full">
-            <input
-              type="text"
-              id="novoTema"
-              placeholder="Temas (separe por vírgula)"
-            />
-          </div>
-
-          <div class="field full">
-            <textarea
-              id="novaSobre"
-              placeholder="Sinopse / Resumo do livro"
-            ></textarea>
-          </div>
-
-          <div class="field full">
-            <input
-              type="text"
-              id="novaImagem"
-              placeholder="URL da Imagem da Capa"
-            />
-          </div>
-        </div>
-
-        <button id="salvarLivro">Salvar na Biblioteca</button>
       </div>
     </main>
     <footer id="rod">
@@ -231,6 +235,13 @@
         <p>Library Master</p>
       </div>
     </footer>
-    <script src="JS/script.js"></script>
+    
+    <script src="JS/biblioteca.js"></script>
+    <script src="JS/login.js"></script>
+    <script src="JS/livros.js"></script>
+    <script src="JS/ui.js"></script>
+    <script src="JS/modal.js"></script>
+    <script src="JS/storage.js"></script>
+    <script src="JS/main.js"></script>
   </body>
 </html>

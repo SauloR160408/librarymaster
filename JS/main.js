@@ -28,11 +28,22 @@ if (usuario) {
 // 4. Lógica de Bibliotecário (Botão Add)
 const addBook = document.getElementById("add-book");
 const modalAdd = document.getElementById("modalAdd");
-if (bibliotecario && addBook) {
+
+if (bibliotecario && addBook && modalAdd) {
+
   addBook.classList.remove("hidden");
-  addBook.addEventListener("click", () => modalAdd.classList.remove("hidden"));
+
+  addBook.addEventListener("click", () => {
+    modalAdd.classList.remove("hidden");
+  });
+
 }
-document.getElementById("fecharAdd")?.addEventListener("click", () => modalAdd.classList.add("hidden"));
+document.getElementById("fecharAdd")
+?.addEventListener("click", () => {
+
+    modalAdd?.classList.add("hidden");
+
+});
 document.getElementById("salvarLivro")?.addEventListener("click", adicionarLivro);
 document.getElementById("Cadastrar")?.addEventListener("click", cadastrar);
 

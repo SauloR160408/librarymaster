@@ -72,22 +72,74 @@ function removerLivro(id) {
   renderizar();
 }
 
-function toggleQuero(id) {
-  let livros = getLivrosDB();
-  let livro = livros.find(l => l.id === id);
-  livro.quero = !livro.quero;
-  saveLivrosDB(livros);
-  renderizar();
+
+function toggleFavorito(idlivro){
+
+    let usuario = pegarUsuarioLogado()
+
+    if(!usuario){
+        alert("Faça login")
+        return
+    }
+
+    if(!usuario.favoritos){
+        usuario.favoritos = []
+    }
+
+    const existe =
+    usuario.favoritos.includes(idLivro)
+
+    if(existe){
+
+        usuario.favoritos =
+        usuario.favoritos.filter(
+            id => id !== idLivro
+        )
+
+    }else{
+
+        usuario.favoritos.push(idLivro)
+
+    }
+
+    salvarUsuarioLogado(usuario)
+
+    renderizar()
 }
 
-function toggleFavorito(id) {
-  let livros = getLivrosDB();
-  let livro = livros.find(l => l.id === id);
-  livro.favorito = !livro.favorito;
-  saveLivrosDB(livros);
-  renderizar();
-}
+function toggleFavorito(idLivro){
 
+    let usuario = pegarUsuarioLogado()
+
+    if(!usuario){
+        alert("Faça login")
+        return
+    }
+
+    if(!usuario.quero){
+        usuario.quero = []
+    }
+
+    const existe =
+    usuario.quero.includes(idLivro)
+
+    if(existe){
+
+        usuario.quero =
+        usuario.quero.filter(
+            id => id !== idLivro
+        )
+
+    }else{
+
+        usuario.quero.push(idLivro)
+
+    }
+
+    salvarUsuarioLogado(usuario)
+
+    renderizar()
+}
 function emprestarLivro(id) {
   if (localStorage.getItem("emprestimoAtivo")) {
     alert("Você já tem um livro emprestado!");
@@ -101,3 +153,4 @@ function emprestarLivro(id) {
   alert("Livro emprestado!");
   renderizar();
 }
+
