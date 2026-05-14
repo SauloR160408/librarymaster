@@ -1,6 +1,6 @@
 function verMais(id) {
   const livros = getLivrosDB();
-  const livro = livros.find(l => l.id === id);
+  const livro = livros.find((l) => l.id === id);
   if (!livro.comentarios) livro.comentarios = [];
 
   const vm = document.querySelector(".vm");
@@ -26,7 +26,7 @@ function verMais(id) {
           <div class="comentarios-section">
             <h3>Comentários (${livro.comentarios.length})</h3>
             <div id="lista-comentarios">
-              ${livro.comentarios.map(c => `<div class="comentario-item">${c}</div>`).join("")}
+              ${livro.comentarios.map((c) => `<div class="comentario-item">${c}</div>`).join("")}
             </div>
             <div class="add-comentario">
                 <select id="nova-nota-usuario">
@@ -53,14 +53,16 @@ function salvarComentario(id) {
   if (texto === "") return;
 
   let livros = getLivrosDB();
-  let livro = livros.find(l => l.id === id);
+  let livro = livros.find((l) => l.id === id);
 
   if (!livro.comentarios) livro.comentarios = [];
   if (!livro.todasNotas) livro.todasNotas = [livro.nota];
 
   livro.comentarios.push(texto);
   livro.todasNotas.push(notaDada);
-  livro.nota = Math.round(livro.todasNotas.reduce((acc, n) => acc + n, 0) / livro.todasNotas.length);
+  livro.nota = Math.round(
+    livro.todasNotas.reduce((acc, n) => acc + n, 0) / livro.todasNotas.length,
+  );
 
   saveLivrosDB(livros);
   renderizar();

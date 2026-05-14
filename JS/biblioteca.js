@@ -12,28 +12,42 @@ function renderizar() {
 
   const html = livros
     .filter((livro) => {
-      const temasSel = Array.from(document.querySelectorAll("#tema input:checked")).map(t => t.value.toLowerCase());
-      const pessSel = Array.from(document.querySelectorAll("#pessoais input:checked")).map(p => p.value);
+      const temasSel = Array.from(
+        document.querySelectorAll("#tema input:checked"),
+      ).map((t) => t.value.toLowerCase());
+      const pessSel = Array.from(
+        document.querySelectorAll("#pessoais input:checked"),
+      ).map((p) => p.value);
 
-      const filtroBusca = livro.titulo.toLowerCase().includes(busca) || livro.autor.toLowerCase().includes(busca);
-      const filtroTemas = temasSel.length === 0 || temasSel.some(t => livro.temas.includes(t));
-      const filtroPessoais = pessSel.length === 0 || pessSel.some(p => livro[p] === true);
+      const filtroBusca =
+        livro.titulo.toLowerCase().includes(busca) ||
+        livro.autor.toLowerCase().includes(busca);
+      const filtroTemas =
+        temasSel.length === 0 || temasSel.some((t) => livro.temas.includes(t));
+      const filtroPessoais =
+        pessSel.length === 0 || pessSel.some((p) => livro[p] === true);
 
-      return filtroBusca && filtroTemas && filtroPessoais &&
-             (!genero || livro.genero === genero) &&
-             (!subgenero || livro.subgenero === subgenero) &&
-             (!tipo || livro.tipo === tipo) &&
-             (!faixa || livro.faixaEtaria === faixa) &&
-             (livro.nota >= notaMin);
+      return (
+        filtroBusca &&
+        filtroTemas &&
+        filtroPessoais &&
+        (!genero || livro.genero === genero) &&
+        (!subgenero || livro.subgenero === subgenero) &&
+        (!tipo || livro.tipo === tipo) &&
+        (!faixa || livro.faixaEtaria === faixa) &&
+        livro.nota >= notaMin
+      );
     })
     .sort((a, b) => {
       const ordem = document.getElementById("ord").value;
       if (ordem === "az") return a.titulo.localeCompare(b.titulo);
       if (ordem === "nota") return b.nota - a.nota;
-      if (ordem === "recente") return Number(b.dataPublicacao) - Number(a.dataPublicacao);
+      if (ordem === "recente")
+        return Number(b.dataPublicacao) - Number(a.dataPublicacao);
       return 0;
     })
-    .map(livro => `
+    .map(
+      (livro) => `
       <div class="book">
         <div class="imagem"><img src="${livro.imagem}"></div>
         <div class="info">
@@ -47,12 +61,13 @@ function renderizar() {
           <div class="btn-info">
             <button class="emprestar" onclick="emprestarLivro(${livro.id})">${livro.disponivel ? "Emprestar" : "Indisponível"}</button>
             <button class="ver-mais" onclick="verMais(${livro.id})">Ver mais</button>
-            <button class="icons" onclick="toggleQuero(${livro.id})"><img src="${livro.quero ? 'imagens/quero-cheia-removebg-preview.png' : 'imagens/quero-oca-removebg-preview.png'}"></button>
-            <button class="icons" onclick="toggleFavorito(${livro.id})"><img src="${livro.favorito ? 'imagens/star-cheia-removebg-preview.png' : 'imagens/star-oca-removebg-preview.png'}"></button>
+            <button class="icons" onclick="toggleQuero(${livro.id})"><img src="${livro.quero ? "imagens/quero-cheia-removebg-preview.png" : "imagens/quero-oca-removebg-preview.png"}"></button>
+            <button class="icons" onclick="toggleFavorito(${livro.id})"><img src="${livro.favorito ? "imagens/star-cheia-removebg-preview.png" : "imagens/star-oca-removebg-preview.png"}"></button>
           </div>
         </div>
         ${bibliotecario ? `<button class="remover-livro" onclick="removerLivro(${livro.id})"><img src="imagens/lixeira-icon-removebg-preview.png" alt="icon lixeira"></button>` : ""}
-      </div>`)
+      </div>`,
+    )
     .join("");
 
   container.innerHTML = html;
